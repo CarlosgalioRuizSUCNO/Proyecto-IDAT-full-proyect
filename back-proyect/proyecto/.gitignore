@@ -1,0 +1,19 @@
+# Created by venv; see https://docs.python.org/3/library/venv.html
+# Compilados de Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Entornos virtuales
+venv/
+ENV/
+env/
+.venv/
+
+# Archivos de configuración local
+*.env
+
+# Archivos temporales
+*.log
+*.pot
+*.pyproj
