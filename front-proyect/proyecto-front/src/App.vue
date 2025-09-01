@@ -9,7 +9,8 @@ const newProduct = ref({ name: "", price: 0 });
 const editing = ref(false);
 const editData = ref({});
  
-const API_URL = "http://127.0.0.1:8000/products";
+// const API_URL = "http://127.0.0.1:8000/products";
+const API_URL = "https://backend-proyect-ln71.onrender.com/products";
  
 const fetchProducts = async () => {
   try {

@@ -12,7 +12,8 @@ export default {
   async mounted() {
     try {
       // Obtén todos los productos desde tu API
-      const response = await axios.get("http://localhost:8000/products");
+      // const response = await axios.get("http://localhost:8000/products");
+      const response = await axios.get("https://backend-proyect-ln71.onrender.com/products")
       this.productos = response.data;
     } catch (error) {
       console.error("Error al obtener productos:", error);
