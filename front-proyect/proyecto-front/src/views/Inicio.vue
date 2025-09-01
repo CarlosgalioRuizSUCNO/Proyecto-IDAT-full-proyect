@@ -15,8 +15,8 @@ export default {
   async mounted() {
     try {
       // Obtén todos los productos desde tu API
-      // const response = await axios.get("http://localhost:8000/products");
-      const response = await axios.get("https://backend-proyect-ln71.onrender.com/products")
+      const response = await axios.get("http://localhost:8000/products");
+      // const response = await axios.get("https://backend-proyect-ln71.onrender.com/products")
       this.productos = response.data;
     } catch (error) {
       console.error("Error al obtener productos:", error);
@@ -43,6 +43,7 @@ export default {
       <div v-for="p in productos.slice(0,3)" :key="p.id" class="col-md-4">
         <div class="card shadow-sm h-100">
           <img style="height: 315px;" :src= "p.image" class="card-img-top" :alt="p.name">
+          <!-- <img style="height: 315px;" :src= "p.imagen" class="card-img-top" :alt="p.nombre"> -->
           <div class="card-body">
             <h5 class="card-title">{{ p.name }} </h5>
             <p class="card-text text-muted">$/ {{ p.price}}</p>
