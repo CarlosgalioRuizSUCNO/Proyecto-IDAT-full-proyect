@@ -27,7 +27,7 @@ class Product(BaseModel):
  
 products = [
   Product(id=1, name = "TV", price = 1999, image = "https://images.samsung.com/is/image/samsung/assets/pe/tvs/03-2025/2025-tvs-pcd-f03-line-up-01-mo.jpg?$720_N_JPG$", description = "High-end gaminf TV"),
-  Product(id=2, name = "smartphone", price = 499, image = "https://rymportatiles.com.pe/cdn/shop/files/Samsung-Galaxy-S24-Ultra-grey.png?v=1706808200&width=1214", description = "latest model smartphone"),
+  Product(id=2, name = "smartphone", price = 799, image = "https://rymportatiles.com.pe/cdn/shop/files/Samsung-Galaxy-S24-Ultra-grey.png?v=1706808200&width=1214", description = "latest model smartphone"),
   Product(id=3, name = "tablet", price = 249, image = "https://i5.walmartimages.com/asr/76306201-5160-4a1c-ba20-364a2470592a.69d9219fbea842b22a511fae0ee4d6c7.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF", description = "screen with good resolution"),
   Product(id=4, name = "laptop", price = 799, image = "https://elcomercio.pe/resizer/v2/5G2JX6RN6VEXJBHT6LETGSUA4M.jpg?auth=af2d6488ebff91f93a51210eefff4764ace76542f6eee89cb1c7d7786b9702f2&width=1200&height=800&quality=75&smart=true", description = "good laptop with great resolution"),
 ]
