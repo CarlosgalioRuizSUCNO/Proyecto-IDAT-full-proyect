@@ -2,9 +2,16 @@
 
 import { ref } from "vue";
 import { RouterLink, RouterView } from "vue-router";
+import { useTiendaStore } from "./stores/tienda";
+import { storeToRefs } from "pinia";
 
-const products = ref([]);
-const newProduct = ref({ name: "", price: 0 });
+
+const useTienda = useTiendaStore();
+
+const {products, newProduct} = storeToRefs(useTienda);
+
+// const products = ref([]);
+// const newProduct = ref({ name: "", price: 0 });
  
 const editing = ref(false);
 const editData = ref({});
@@ -12,81 +19,23 @@ const editData = ref({});
 const API_URL = "http://127.0.0.1:8000/products";
 // const API_URL = "https://backend-proyect-ln71.onrender.com/products";
  
-const fetchProducts = async () => {
-  try {
-    const res = await fetch(API_URL);
-    products.value = await res.json();
+// const fetchProducts = async () => {
+//   try {
+//     const res = await fetch(API_URL);
+//     products.value = await res.json();
  
-    // console.log(res);
-  } catch (error) {
-    console.error("Error al obtener productos:", error);
-  }
-};
-fetchProducts();
- 
-const addProduct = async () => {
-  if (!newProduct.value.name || newProduct.value.price <= 0) return;
- 
-  try {
-    const res = await fetch(API_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...newProduct.value, id: Date.now() }),
-    });
- 
-    const created = await res.json();
-    products.value.push(created);
- 
-    newProduct.value.name = "";
-    newProduct.value.price = 0;
-  } catch (error) {
-    console.error("Error al agregar producto:", error);
-  }
-};
- 
-const deleteProduct = async (id) => {
-  try {
-    await fetch(`${API_URL}/${id}`, { method: "DELETE" });
-    products.value = products.value.filter((p) => p.id !== id);
-  } catch (error) {
-    console.error("Error al eliminar producto:", error);
-  }
-};
- 
-const editProduct = (product) => {
-  editing.value = true;
-  // console.log(product);
-  editData.value = { ...product };
-  // console.log(editData.value);
-};
- 
-const cancelEdit = () => {
-  editing.value = false;
-  editData.value = {};
-};
- 
-const updateProduct = async () => {
-  try {
-    const res = await fetch(`${API_URL}/${editData.value.id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(editData.value),
-    });
-    const updated = await res.json();
-    const index = products.value.findIndex((p) => p.id === updated.id);
-    // console.log(index);
-    products.value[index] = updated;
-    cancelEdit();
-  } catch (error) {
-    console.error("Error al actualizar producto:", error);
-  }
-};
+//     // console.log(res);
+//   } catch (error) {
+//     console.error("Error al obtener productos:", error);
+//   }
+// };
+// fetchProducts();
 </script>
  
 <template>
   <nav class=" mt-5 navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="./">CG-Web</a>
+    <div class="container-fluid"> 
+      <RouterLink class="navbar-brand" to="/">CG-Web</RouterLink>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNav" aria-controls="menuNav" aria-expanded="false" aria-label="Menú">
         <span class="navbar-toggler-icon"></span>
       </button>

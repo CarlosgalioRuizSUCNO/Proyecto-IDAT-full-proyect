@@ -1,7 +1,18 @@
-<script >
+<script>
 
 import axios from "axios";
 
+// import { useTiendaStore } from "./stores/tienda";
+// import { storeToRefs } from "pinia";
+
+
+// const useTienda = useTiendaStore();
+
+// const {products} = storeToRefs(useTienda);
+
+// const {fetchProducts} = useTienda;
+
+// console.log(products)
 export default {
   name: "Inicio",
   data() {

@@ -46,7 +46,8 @@ export default {
           <!-- <img style="height: 315px;" :src= "p.imagen" class="card-img-top" :alt="p.nombre"> -->
           <div class="card-body">
             <h5 class="card-title">{{ p.name }} </h5>
-            <p class="card-text text-muted">$/ {{ p.price}}</p>
+            <p style="margin-bottom: 0;" class="card-text text-muted">$/ {{ p.price}}</p>
+            <p class="card-text text-muted">Descripción: {{ p.description}}</p>
             <button @click="addProduct" class="btn btn-primary">
               Agregar Producto
             </button>
