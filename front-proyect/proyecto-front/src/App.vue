@@ -2,34 +2,28 @@
 
 import { ref } from "vue";
 import { RouterLink, RouterView } from "vue-router";
-import { useTiendaStore } from "./stores/tienda";
-import { storeToRefs } from "pinia";
-
-
-const useTienda = useTiendaStore();
-
-const {products, newProduct} = storeToRefs(useTienda);
 
 // const products = ref([]);
 // const newProduct = ref({ name: "", price: 0 });
- 
-const editing = ref(false);
-const editData = ref({});
- 
+
+const products = ref([]);
+
 const API_URL = "http://127.0.0.1:8000/products";
-// const API_URL = "https://backend-proyect-ln71.onrender.com/products";
+
+const newProduct = ref({ name: "", price: 0, image: "", description: "" });
+
+const fetchProducts = async () => {
+  try {
+    const res = await fetch(API_URL);
+    products.value = await res.json();
  
-// const fetchProducts = async () => {
-//   try {
-//     const res = await fetch(API_URL);
-//     products.value = await res.json();
+    // console.log(res);
+  } catch (error) {
+    console.error("Error al obtener productos:", error);
+  }
+};
+fetchProducts();
  
-//     // console.log(res);
-//   } catch (error) {
-//     console.error("Error al obtener productos:", error);
-//   }
-// };
-// fetchProducts();
 </script>
  
 <template>
